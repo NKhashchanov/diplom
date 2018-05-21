@@ -1,0 +1,30 @@
+<table>
+    <tr>
+        <th style = 'width: 50px'>№ п/п</th>
+        <th style = 'width: 350px'>Логин</th>
+        <th style = 'width: 350px'>Изменение пароля / Удаление записи</th>
+    </tr>
+    {% for admin in getAdmins %}
+        <tr>
+            <td>
+                {{ loop.index }}
+            </td>
+            <td>
+                {{ admin.login }}
+            </td>
+            <td>
+                <form method="POST" style="margin: auto">
+                    <input style="width: 100%" type="password" name="password" value="{{ admin.password }}">
+                    <input type="hidden" name="adminID" value="{{ admin.id }}">
+                    <input type="submit" value="Изменить пароль" name="editPass">
+                    <input type="submit" value="Удалить запись" name="delete">
+                </form>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+<form method="POST" style="margin: 10px auto">
+    <input style="width: 300px" type="text" name="login" placeholder="Логин">
+    <input style="width: 300px" type="password" name="password" placeholder="Пароль">
+    <input type="submit" value="Добавить администратора" name="add">
+</form>

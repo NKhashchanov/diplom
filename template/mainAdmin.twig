@@ -1,0 +1,27 @@
+<div>
+    <div id = 'intAdm'>
+        Интерфейс администратора
+    </div>
+</div>
+<div id = 'leftMenu'>
+    <div class="left">
+        <a href="index.php?menu=admins" class="link">
+            <div class="about-big-title services">Список администраторов</div>
+        </a>
+    </div>
+    <div class="left">
+        <a href="index.php?menu=themes" class="link">
+            <div class="about-big-title services">Список вопросов</div>
+        </a>
+    </div>
+</div>
+<div style="margin-top: 10px">
+    <div class="bar" id="div1">
+        {% if get.menu == 'admins' or post.editPass or post.add or post.delete  %}
+            {% include 'admins.twig' %}
+        {% elseif get.menu == 'themes' %}
+            {% include 'themes.twig' %}
+        {% endif %}
+    </div>
+</div>
+

@@ -1,0 +1,24 @@
+<link rel="stylesheet" href="../diplom/css/style.css" type="text/css"/>
+<div id = 'top'>
+    <div id = 'welcome'>
+        <h3>
+            Добро пожаловать в сервис Вопрос - Ответ!
+        </h3>
+    </div>
+    <div id = 'admin'>
+        <span class = 'admin'>Уголок Администратора</span><br>
+        {% if session.login is empty %}
+            {% include 'login.twig' %}
+        {% else %}
+            {% include 'logined.twig' %}
+        {% endif %}
+    </div>
+</div>
+
+<div id = 'content'>
+    {% if session.login is empty %}
+        {% include 'mainUser.twig' %}
+    {% else %}
+        {% include 'mainAdmin.twig' %}
+    {% endif %}
+</div>

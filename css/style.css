@@ -1,0 +1,88 @@
+#top {
+    border-bottom: black solid 1px;
+    display: flex;
+    width: 1024px;
+    margin: 0 auto;
+}
+
+#welcome {
+    width: 800px;
+    text-align: center;
+    margin: auto;
+}
+
+#admin {
+    width: 224px;
+    text-align: center;
+    border-left: grey solid 1px;
+}
+
+#loginForm {
+    text-align: left;
+    margin: 5px 0 5px 5px;
+}
+
+#login {
+    width: 200px;
+}
+
+#password {
+    width: 200px;
+}
+
+#content {
+    border-bottom: black solid 1px;
+    display: flex;
+    width: 1024px;
+    margin: 0 auto;
+}
+
+#intAdm {
+    position: absolute;
+    width: 1024px;
+}
+
+details {
+    border: 1px solid #999;
+    border-radius: 5px;
+    margin: 0 0 .4em 0;
+    width: 1000px;
+}
+
+details {
+    margin: 10px 0 10px 10px;
+    cursor: pointer;
+}
+
+summary {
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 8px 10px;
+    background: -webkit-linear-gradient(top, #f3f3f3 50%, #e6e6e6 50%);
+}
+
+TABLE {
+    border-collapse: collapse;
+    width: 750px;
+}
+
+TH, TD {
+    border: 1px solid black;
+    text-align: center;
+    padding: 4px;
+}
+
+TH {
+    background: rgba(0, 0, 0, 0.15);
+    vertical-align: bottom;
+    padding: 0;
+}
+
+.left {
+    width: 250px;
+}
+
+#leftMenu {
+    position: relative;
+    top: 40px;
+}
