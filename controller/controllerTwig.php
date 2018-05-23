@@ -33,8 +33,11 @@ function twig() {
         $errLog = $errorLogin->login();
         $twig->addGlobal('errorLogin', $errLog);
     }
-
+    $getQuestions = new ModelQuestions();
+    $allQuestions = new ControllerQuestions();
+    $twig->addGlobal('allQuestions', $allQuestions);
     $twig->addGlobal('getAdmins', ModelAdmin::admins());
+    $twig->addGlobal('getQuestions', $getQuestions);
 
 
     return $twig;

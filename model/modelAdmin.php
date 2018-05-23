@@ -7,7 +7,7 @@ class ModelAdmin
 // Логин пользователя
     function login($params)
     {
-        global $pdo;
+        $pdo = Di::pdo();
         $login = $params['login'];
         $password = $params['password'];
         $stmt = $pdo->prepare('SELECT * FROM admins WHERE login = :login AND password = :password');
@@ -23,7 +23,7 @@ class ModelAdmin
 // Изменить пароль администратора
     function edit($params)
     {
-        global $pdo;
+        $pdo = Di::pdo();
         $id = $params['id'];
         $edit = $params['password'];
         $stmt = $pdo->prepare('UPDATE admins SET password = :password WHERE id = :id');
@@ -35,7 +35,7 @@ class ModelAdmin
 // Удалить администратора
     function delete($params)
     {
-        global $pdo;
+        $pdo = Di::pdo();
         $id = $params['id'];
         $stmt = $pdo->prepare('DELETE FROM admins WHERE id = :id');
         $stmt->bindParam(':id', $id);
@@ -45,7 +45,7 @@ class ModelAdmin
 // Добавить администратора
     function add($params)
     {
-        global $pdo;
+        $pdo = Di::pdo();
         $login = $params['login'];
         $password = $params['password'];
         $id = null;
@@ -59,7 +59,7 @@ class ModelAdmin
 // Получаем массив с пользователями
     static function admins()
     {
-        global $pdo;
+        $pdo = Di::pdo();
         $stmt = $pdo->query('SELECT * FROM admins');
         $data = $stmt->fetchAll();
         return $data;

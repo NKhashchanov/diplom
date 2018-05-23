@@ -31,8 +31,6 @@
 }
 
 #content {
-    border-bottom: black solid 1px;
-    display: flex;
     width: 1024px;
     margin: 0 auto;
 }
@@ -63,12 +61,11 @@ summary {
 
 TABLE {
     border-collapse: collapse;
-    width: 750px;
+    width: 100%;
 }
 
 TH, TD {
-    border: 1px solid black;
-    text-align: center;
+    text-align: left;
     padding: 4px;
 }
 
@@ -82,7 +79,93 @@ TH {
     width: 250px;
 }
 
-#leftMenu {
+#topMenu {
+    position: relative;
+    top: 30px;
+}
+
+details {
+    border: 1px solid #999;
+    border-radius: 5px;
+    margin: 0 0 .4em 0;
+    padding: 1.04%;
+}
+
+details {
+    cursor: pointer;
+}
+
+summary {
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 8px 10px;
+    background: -webkit-linear-gradient(top, #f3f3f3 50%, #e6e6e6 50%);
+}
+
+#userContent {
+    top: 60px;
+    position: relative;
+}
+
+#questionForm {
+    width: 100%;
     position: relative;
     top: 40px;
+}
+
+#Q {
+    font-style: italic;
+    font-size: 20px;
+    text-align: justify;
+}
+
+#A {
+    font-size: 16px;
+    text-align: justify;
+    border: none;
+    border-top: rgba(0, 0, 0, 0.08) solid 1px;
+}
+
+#whoQA {
+    font-style: oblique;
+    font-size: 14px;
+    text-align: right;
+    border: none;
+}
+
+#QA {
+    border: #cccccc solid 1px;
+    width: 100%;
+}
+
+#infoQuestions {
+    font-style: oblique;
+    font-size: 14px;
+    text-align: left;
+    border: none;
+}
+
+#addTheme {
+    position: relative;
+    margin: auto;
+    top: 60px;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+}
+
+#deleteTheme {
+    text-align: right;
+    margin-bottom: 0px;
+}
+
+.labels tr td {
+    background-color: rgba(9, 10, 11, 0.13);
+    font-weight: bold;
+    color: #000;
+}
+.label tr td label {
+    display: block;
+}
+[data-toggle="toggle"] {
+    display: none;
 }

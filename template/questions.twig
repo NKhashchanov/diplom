@@ -1,0 +1,102 @@
+<form method="POST" id = 'addTheme'>
+    <input style="width: 100%" required type="text" name="newTheme" placeholder="Ведите название новой темы">
+    <input type="submit" value="Создать тему" name="addTheme">
+</form>
+
+<table id = 'QA'>
+    {% for theme in getQuestions.themes %}
+        <tbody>
+        <tbody class="labels">
+        <tr>
+            <td>
+                <label for="id{{ theme.id }}">
+                    <table id = 'QA'>
+                        <tr>
+                            <td  id = 'A'>
+                                <span>{{ theme.theme }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td  id = 'infoQuestions'>
+                                {% for all in allQuestions.allQuestionsInTheme %}
+                                    {% if theme.id == all.id %}
+                                        <span>Всего вопросов: <b>{{ all.count }}</b></span>
+                                    {% endif %}
+                                {% endfor %}
+                                {% for pub in allQuestions.publishedQuestionsInTheme %}
+                                    {% if theme.id == pub.id %}
+                                        <span>Опубликовано вопросов: <b>{{ pub.count }}</b></span>
+                                    {% endif %}
+                                {% endfor %}
+                                {% for notQ in allQuestions.notQuestionsInTheme %}
+                                    {% if theme.id == notQ.id %}
+                                        <span>Вопросов без ответа: <b>{{ notQ.count }}</b></span>
+                                    {% endif %}
+                                {% endfor %}
+                                <p style="text-align: right;"><a href='../diplom/index.php?menu=themes&action=deleteQ&id={{ theme.id }}'>Удалить Тему и все в ней!</a></p>
+                            </td>
+                        </tr>
+                    </table>
+                </label>
+                <input type="checkbox" name="id{{ theme.id }}" id="id{{ theme.id }}" data-toggle="toggle">
+            </td>
+        </tr>
+        </tbody>
+        <tbody class="hide">
+        {% for question in getQuestions.questions %}
+            {% if theme.id == question.theme_id %}
+                <tr>
+                    <td id = 'Q'>
+                        <span>- {{ question.question }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td id = 'whoQA'>
+                        <span>{{ question.user }} / {{ question.date_question }} / {{ question.status }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td  id = 'A'>
+                        {% if question.answer != null %}
+                            <span>{{ question.answer }}</span>
+                        {% else %}
+                            <form method="POST" id = 'addAnswer'>
+                                <input style="width: 100%" type="text" name="newAnswer" placeholder="Напишите ответ">
+                                <input type="hidden" name="answerID" value="{{ question.id }}">
+                                <input type="submit" value="Ответить на вопрос" name="addAnswer">
+                                <select name="selectStatus">
+                                    {% for status in getQuestions.status if status != 'Ожидает ответа' %}
+                                        <option value="{{ status }}">{{ status }}</option>
+                                    {% endfor %}
+                                </select>
+                            </form>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr style="border-bottom: black solid 1px; padding-bottom: 5px">
+                    <td  id = 'whoQA'>
+                        <span>{{ question.admin }} / {{ question.date_answer }}</span>
+                        <p style="text-align: right; margin: 0px"><a href='../diplom/index.php?menu=themes&action=deleteA&id={{ question.id }}'>Удалить вопрос</a>
+                            {% if question.status == 'Скрыт' %}
+                                / <a href='../diplom/index.php?menu=themes&action=publish&id={{ question.id }}'>Опубликовать</a>
+                            {% elseif question.status == 'Опубликован' %}
+                                / <a href='../diplom/index.php?menu=themes&action=hide&id={{ question.id }}'>Скрыть</a>
+                            {% endif %}
+                        </p>
+                        <form method="POST">
+                            <input type="hidden" name="questionID" value="{{ question.id }}">
+                            <select name="selectTheme">
+                                {% for theme in getQuestions.themes %}
+                                    <option value="{{ theme.id }}">{{ theme.theme }}</option>
+                                {% endfor %}
+                            </select>
+                            <input type="submit" value="Перенести в другую тему" name="changeTheme">
+                        </form>
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+        </tbody>
+    {% endfor %}
+</table>

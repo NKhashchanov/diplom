@@ -1,0 +1,22 @@
+<div style="position: relative; top: 50px">
+    {% for question in getQuestions.questions %}
+        {% if question.answer == null %}
+            <form method="POST" id = 'globalQuestion'>
+                <p>Вопрос: <input style="width: 100%" type="text" name="question" value="{{ question.question }}" placeholder="{{ question.question }}"/><br></p>
+            {% for theme in getQuestions.themes if theme.id == question.theme_id %}
+                <input type="hidden" name="questionID" value="{{ question.id }}">
+                Тема: <select name="selectTheme">
+                    {% for theme in getQuestions.themes %}
+                        <option value="{{ theme.id }}">{{ theme.theme }}</option>
+                    {% endfor %}
+                </select> <br>
+                Вопрос задал: <input style="width: 20%" type="text" name="question" value="{{ question.user }}" placeholder="{{ question.user }}"/><br>
+                Дата вопроса: {{ question.date_question }}<br>
+                <input type="submit" value="Отредактировать" name="editQuestion"> / <a href='../diplom/index.php?menu=answer&action=deleteA&id={{ question.id }}'>Удалить вопрос</a><br>
+
+            {% endfor %}
+            </form>
+                <hr>
+        {% endif %}
+    {% endfor %}
+</div>
