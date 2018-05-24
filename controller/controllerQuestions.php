@@ -207,5 +207,21 @@ Class ControllerQuestions
         return $data;
     }
 
+// Функция глобального редактирования вопроса и ответа
+    function edit()
+    {
+        $edit = new ModelQuestions();
+        $data = [];
+        $data['editQ'] = $_POST['editQ'];
+        $data['editA'] = $_POST['editA'];
+        $data['editU'] = $_POST['editU'];
+        $data['selectTheme'] = $_POST['selectTheme'];
+        $data['selectStatus'] = $_POST['selectStatus'];
+        $data['questionID'] = $_POST['questionID'];
+        $result = $edit->edit($data);
+        if ($result) {
+            header('Location: ../diplom/index.php?menu=themes');
+        }
+    }
 }
 

@@ -22,7 +22,7 @@ class ModelQuestions
         $email = $params['email'];
         $selectThemes = $params['selectThemes'];
         $status = 'Ожидает ответа';
-        $dateQuestion = date(c);
+        $dateQuestion = date('c');
         $stmt = $pdo->prepare('INSERT INTO questions (question, theme_id, user, email, date_question, status) VALUES(?, ?, ?, ?, ?, ?)');
         $stmt->bindParam(1, $question);
         $stmt->bindParam(2, $selectThemes);
@@ -89,7 +89,7 @@ class ModelQuestions
         $id = $params['answerID'];
         $adminName = $params['adminName'];
         $status = $params['status'];
-        $dateAnswer = date(c);
+        $dateAnswer = date('c');
         $stmt = $pdo->prepare('UPDATE questions SET answer = :answer, admin = :adminName, status = :status, date_answer = :dateAnswer WHERE id = :id');
         $stmt->bindParam(':answer', $answer);
         $stmt->bindParam(':adminName', $adminName);
@@ -160,6 +160,26 @@ class ModelQuestions
         $stmt = $pdo->prepare('UPDATE questions SET theme_id = :themeID WHERE id = :id');
         $stmt->bindParam(':id', $questionID);
         $stmt->bindParam(':themeID', $themeID);
+        return $stmt->execute();
+    }
+
+// Функция глобального редактирования вопроса и ответа
+    function edit($params)
+    {
+        $pdo = Di::pdo();
+        $editQ = $params['editQ'];
+        $editA = $params['editA'];
+        $editU = $params['editU'];
+        $selectTheme = $params['selectTheme'];
+        $selectStatus = $params['selectStatus'];
+        $id = $params['questionID'];
+        $stmt = $pdo->prepare('UPDATE questions SET question = :editQ, answer = :editA, user = :editU, status = :status, theme_id = :selectTheme WHERE id = :id');
+        $stmt->bindParam(':editQ', $editQ);
+        $stmt->bindParam(':editA', $editA);
+        $stmt->bindParam(':editU', $editU);
+        $stmt->bindParam(':status', $selectStatus);
+        $stmt->bindParam(':selectTheme', $selectTheme);
+        $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
 

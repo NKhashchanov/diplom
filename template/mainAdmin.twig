@@ -1,24 +1,44 @@
-<div>
-    <div id = 'intAdm'>
-        Интерфейс администратора
+<link rel="stylesheet" href="../diplom/css/style.css" type="text/css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../diplom/js/app.js"></script>
+<div id = 'top'>
+    <div id = 'welcome'>
+        <h3>
+            Добро пожаловать в сервис Вопрос - Ответ!
+        </h3>
+    </div>
+    <div id = 'admin'>
+        <span class = 'admin'>Уголок Администратора</span><br>
+        <form id="loginForm" style="text-align: left;">
+            <p>Вы вошли как {{ core.session.login }}</p>
+            <input id="exit" type="button" value="Выход" onclick="javascript:window.location='../diplom/logout.php'"/>
+        </form>
     </div>
 </div>
-<div id = 'topMenu'>
-    <div class="top">
-        <a href="index.php?menu=admins" class="link">Список администраторов</a> /
-        <a href="index.php?menu=themes" class="link">Список вопросов</a> /
-        <a href="index.php?menu=answer" class="link">На это надо ответить!</a>
-    </div>
-</div>
-<div>
+<div id="content">
     <div>
-        {% if get.menu == 'admins' or post.editPass or post.add or post.delete  %}
-            {% include 'admins.twig' %}
-        {% elseif get.menu == 'themes' %}
-            {% include 'questions.twig' %}
-        {% elseif get.menu == 'answer' %}
-            {% include 'answer.twig' %}
-        {% endif %}
+        <div id = 'intAdm'>
+            Интерфейс администратора
+        </div>
+    </div>
+    <div id = 'topMenu'>
+        <div class="top">
+            <a href="index.php?menu=admins" class="link">Список администраторов</a> /
+            <a href="index.php?menu=themes" class="link">Список вопросов</a> /
+            <a href="index.php?menu=answer" class="link">На это надо ответить!</a>
+        </div>
+    </div>
+    <div>
+        <div>
+            {% if core.get.menu == 'admins' or post.editPass or post.add or post.delete  %}
+                {% include 'admins.twig' %}
+            {% elseif core.get.menu == 'themes' %}
+                {% include 'questions.twig' %}
+            {% elseif core.get.menu == 'answer' %}
+                {% include 'answer.twig' %}
+            {% elseif core.get.menu == 'edit' %}
+                {% include 'edit.twig' %}
+            {% endif %}
+        </div>
     </div>
 </div>
-

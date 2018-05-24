@@ -1,63 +1,85 @@
-<div>
-    <div id = 'intAdm'>
-        Интерфейс пользователей
+<link rel="stylesheet" href="../diplom/css/style.css" type="text/css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="../diplom/js/app.js"></script>
+<div id = 'top'>
+    <div id = 'welcome'>
+        <h3>
+            Добро пожаловать в сервис Вопрос - Ответ!
+        </h3>
     </div>
-    <div id = 'questionForm'>
-        <span>Вы можете задать свой вопрос, если он пройдет модерацию, вы увидете его в списке!</span>
-        <form method="POST" style="margin: auto">
-            <input style="width: 100%" required type="text" name="question" placeholder="Введите свой вопрос">
-            <input style="width: 29%" required type="text" name="userName" placeholder="Введите свое имя">
-            <input style="width: 70%" required type="email" name="email" placeholder="Введите свой e-mail">
-            Выберите тему
-            <select name="selectThemes">
-                {% for theme in getQuestions.themes %}
-                    <option value="{{ theme.id }}">{{ theme.theme }}</option>
-                {% endfor %}
-            </select>
-            <input type="submit" value="Задать вопрос" name="questionAdd">
+    <div id = 'admin'>
+        <span class = 'admin'>Уголок Администратора</span><br>
+        <form id="loginForm" method="POST" style="text-align: left;">
+            <input id="login" type="text" name="login" placeholder="Логин" />
+            <input id="password" type="password" name="password" placeholder="Пароль" />
+            <input id="enter" type="submit" name="signIn" value="Вход" />
+            {{ errorLogin }}
         </form>
     </div>
 </div>
+<div  id="content">
+    <div>
+        <div id = 'intAdm'>
+            Интерфейс пользователей
+        </div>
+        <div id = 'questionForm'>
+            <span>Вы можете задать свой вопрос, если он пройдет модерацию, вы увидете его в списке!</span>
+            <form method="POST" style="margin: auto">
+                <input style="width: 100%" required type="text" name="question" placeholder="Введите свой вопрос">
+                <input style="width: 29%" required type="text" name="userName" placeholder="Введите свое имя">
+                <input style="width: 70%" required type="email" name="email" placeholder="Введите свой e-mail">
+                Выберите тему
+                <select name="selectThemes">
+                    {% for theme in getQuestions.themes %}
+                        <option value="{{ theme.id }}">{{ theme.theme }}</option>
+                    {% endfor %}
+                </select>
+                <input type="submit" value="Задать вопрос" name="questionAdd">
+            </form>
+        </div>
+    </div>
 
-<table id = 'QA'>
-    {% for theme in getQuestions.themes %}
-    <tbody>
-    <tbody class="labels">
-    <tr>
-        <td>
-            <label for="id{{ theme.id }}">{{ theme.theme }}</label>
-            <input type="checkbox" name="id{{ theme.id }}" id="id{{ theme.id }}" data-toggle="toggle">
-        </td>
-    </tr>
-    </tbody>
-    <tbody class="hide">
-    {% for question in getQuestions.questions %}
-        {% if theme.id == question.theme_id and question.answer != null and question.status == 'Опубликован' %}
-            <tr>
-                <td id = 'Q'>
-                    <span>- {{ question.question }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td id = 'whoQA'>
-                    <span>{{ question.user }} / {{ question.date_question }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td  id = 'A'>
-                    <span>{{ question.answer }}</span>
-                </td>
-            </tr>
-            <tr>
-                <td  id = 'whoQA'>
-                    <span>{{ question.admin }} / {{ question.date_answer }}</span>
-                </td>
-            </tr>
-            <br>
-        {% endif %}
-    {% endfor %}
+    <table id = 'QA'>
+        {% for theme in getQuestions.themes %}
+        <tbody>
+        <tbody class="labels">
+        <tr>
+            <td>
+                <label for="id{{ theme.id }}">{{ theme.theme }}</label>
+                <input type="checkbox" name="id{{ theme.id }}" id="id{{ theme.id }}" data-toggle="toggle">
+            </td>
+        </tr>
+        </tbody>
+        <tbody class="hide">
+        {% for question in getQuestions.questions %}
+            {% if theme.id == question.theme_id and question.answer != null and question.status == 'Опубликован' %}
+                <tr>
+                    <td id = 'Q'>
+                        <span>- {{ question.question }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td id = 'whoQA'>
+                        <span>{{ question.user }} / {{ question.date_question }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td  id = 'A'>
+                        <span>{{ question.answer }}</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td  id = 'whoQA'>
+                        <span>{{ question.admin }} / {{ question.date_answer }}</span>
+                    </td>
+                </tr>
+                <br>
+            {% endif %}
+        {% endfor %}
 
-    </tbody>
-    </tbody>
-    {% endfor %}
-</table>
+        </tbody>
+        </tbody>
+        {% endfor %}
+    </table>
+
+</div>

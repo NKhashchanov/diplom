@@ -1,0 +1,32 @@
+{% for question in getQuestions.questions %}
+    {% if core.get.id == question.id %}
+        <table style="position:relative; top: 50px;">
+            <tr>
+                <td id = 'Q'>
+                    <form method="POST" id = 'edit'>
+                        Вопрос:<br>
+                        <input style="width: 100%; margin: 10px" type="text" name="editQ" placeholder="{{ question.question }}" value="{{ question.question }}"><br>
+                        Ответ:<br>
+                        <input style="width: 100%; margin: 10px" type="text" name="editA" placeholder="{{ question.answer }}" value="{{ question.answer }}"><br>
+                        Автор:<br>
+                        <input style="width: 100%; margin: 10px" type="text" name="editU" placeholder="{{ question.user }}" value="{{ question.user }}"><br>
+                        Сменить тему вопроса:<br>
+                        <select name="selectTheme" style="margin: 10px">
+                            {% for theme in getQuestions.themes %}
+                                <option value="{{ theme.id }}">{{ theme.theme }}</option>
+                            {% endfor %}
+                        </select><br>
+                        Сменить статус вопроса:<br>
+                        <select name="selectStatus" style="margin: 10px">
+                            {% for status in getQuestions.status if status != 'Ожидает ответа' %}
+                                <option value="{{ status }}">{{ status }}</option>
+                            {% endfor %}
+                        </select><br>
+                        <input style="margin: 10px" type="hidden" name="questionID" value="{{ question.id }}">
+                        <input style="margin: 10px" type="submit" value="Сохранить изменения" name="edit">
+                    </form>
+                </td>
+            </tr>
+        </table>
+    {% endif %}
+{% endfor %}

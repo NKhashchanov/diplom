@@ -15,6 +15,16 @@ class Di
         $pdo = new PDO($link, $user, $password, $options);
         return $pdo;
     }
+
+    static function twigFunc()
+    {
+        $loader = new Twig_Loader_Filesystem('../diplom/template');
+        $twig = new Twig_Environment($loader, array(
+            'cache' => '../diplom/cache',
+            'auto_reload' => true,
+        ));
+        return $twig;
+    }
 }
 
 

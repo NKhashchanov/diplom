@@ -82,10 +82,27 @@ if (!empty($_POST)) {
     }
 }
 
+if (!empty($_POST)) {
+    if (!empty($_POST['editQ']) && !empty($_POST['editA']) && !empty($_POST['editU']) && !empty($_POST['selectTheme']) && !empty($_POST['selectStatus']) && !empty($_POST['questionID'])) {
+        $controllerNewAnswer = new ControllerQuestions();
+        $controllerNewAnswer->edit();
+    }
+}
+
+
+
+
+
+
+
+
 
 
 // Отобразим основную страницу
 // ДОЛЖНО БЫТЬ ВСЕГДА В КОНЦЕ !!!!!!!!
-$main = new Twig();
-$main->main();
+if (!empty($_SESSION['login'])) {
+    $logined = Twig::mainAdmin();
+} else {
+    $notLogined = Twig::mainUser();
+}
 
