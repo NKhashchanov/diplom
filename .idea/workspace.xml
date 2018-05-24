@@ -34,7 +34,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modelQuestions.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="modelQuestions.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/model/modelQuestions.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="594">
@@ -55,16 +55,6 @@
                 <marker date="1527166672827" expanded="true" signature="5021:5076" ph="UPDATE questions... " />
                 <marker date="1527166672827" expanded="true" signature="5597:5725" ph="UPDATE questions... " />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="config.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/core/config.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="4" selection-end-column="15" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -108,11 +98,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="117" column="23" lean-forward="true" selection-start-line="117" selection-start-column="23" selection-end-line="117" selection-end-column="23" />
+            <state relative-caret-position="532">
+              <caret line="138" column="23" lean-forward="false" selection-start-line="138" selection-start-column="23" selection-end-line="138" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -166,6 +156,7 @@
         <option value="$PROJECT_DIR$/template/themes.twig" />
         <option value="$PROJECT_DIR$/template/admins.twig" />
         <option value="$PROJECT_DIR$/template/answer.twig" />
+        <option value="$PROJECT_DIR$/core/config.php" />
         <option value="$PROJECT_DIR$/core/application.php" />
         <option value="$PROJECT_DIR$/template/main.twig" />
         <option value="$PROJECT_DIR$/template/login.twig" />
@@ -173,6 +164,7 @@
         <option value="$PROJECT_DIR$/template/mainUser.twig" />
         <option value="$PROJECT_DIR$/controller/controllerAdmin.php" />
         <option value="$PROJECT_DIR$/controller/controllerTwig.php" />
+        <option value="$PROJECT_DIR$/css/style.css" />
         <option value="$PROJECT_DIR$/js/app.js" />
         <option value="$PROJECT_DIR$/template/mainAdmin.twig" />
         <option value="$PROJECT_DIR$/template/questions.twig" />
@@ -181,8 +173,6 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/controller/controllerQuestions.php" />
         <option value="$PROJECT_DIR$/model/modelQuestions.php" />
-        <option value="$PROJECT_DIR$/core/config.php" />
-        <option value="$PROJECT_DIR$/css/style.css" />
       </list>
     </option>
   </component>
@@ -201,7 +191,7 @@
       <path value="$PROJECT_DIR$/vendor/composer" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="width" value="1692" />
     <option name="height" value="1034" />
@@ -315,15 +305,15 @@
       <workItem from="1526886850452" duration="13861000" />
       <workItem from="1526900980107" duration="338000" />
       <workItem from="1526901348095" duration="66393000" />
-      <workItem from="1527152453790" duration="14251000" />
+      <workItem from="1527152453790" duration="13975000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144877000" />
+    <option name="totallyTimeSpent" value="144601000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="7" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -485,6 +475,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/core/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/template/main.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -583,6 +581,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="532">
+          <caret line="138" column="23" lean-forward="false" selection-start-line="138" selection-start-column="23" selection-end-line="138" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -673,22 +679,6 @@
             <marker date="1527166672827" expanded="true" signature="5021:5076" ph="UPDATE questions... " />
             <marker date="1527166672827" expanded="true" signature="5597:5725" ph="UPDATE questions... " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/core/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="4" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="117" column="23" lean-forward="true" selection-start-line="117" selection-start-column="23" selection-end-line="117" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
