@@ -51,7 +51,7 @@ if (!empty($_POST)) {
 }
 
 if (!empty($_POST)) {
-    if (!empty($_POST['question']) && !empty($_POST['questionID']) && !empty($_POST['selectTheme']) && !empty($_POST['editQuestion'])) {
+    if (!empty($_POST['question']) && !empty($_POST['questionID']) && !empty($_POST['selectTheme']) && !empty($_POST['editQuestion']) && !empty($_POST['user']) && !empty($_POST['answer'])) {
         $controllerChangeTheme = new ControllerQuestions();
         $controllerChangeTheme->editQuestion();
     }

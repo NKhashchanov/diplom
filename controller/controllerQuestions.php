@@ -54,6 +54,8 @@ Class ControllerQuestions
         $data['question'] = $_POST['question'];
         $data['questionID'] = $_POST['questionID'];
         $data['theme'] = $_POST['selectTheme'];
+        $data['user'] = $_POST['user'];
+        $data['answer'] = $_POST['answer'];
         $result = $editQuestion->editQuestion($data);
         if ($result) {
             header('Location: ../diplom/index.php?menu=answer');

@@ -106,9 +106,13 @@ class ModelQuestions
         $question = $params['question'];
         $id = $params['questionID'];
         $theme = $params['theme'];
-        $stmt = $pdo->prepare('UPDATE questions SET question = :question, theme_id = :theme WHERE id = :id');
+        $user = $params['user'];
+        $answer = $params['answer'];
+        $stmt = $pdo->prepare('UPDATE questions SET question = :question, theme_id = :theme, user = :user, answer = :answer WHERE id = :id');
         $stmt->bindParam(':question', $question);
         $stmt->bindParam(':theme', $theme);
+        $stmt->bindParam(':user', $user);
+        $stmt->bindParam(':answer', $answer);
         $stmt->bindParam(':id', $id);
         return $stmt->execute();
     }
