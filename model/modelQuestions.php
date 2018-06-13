@@ -8,7 +8,7 @@ class ModelQuestions
     static function themes()
     {
         $pdo = Di::pdo();
-        $stmt = $pdo->query('SELECT * FROM themes');
+        $stmt = $pdo->query('SELECT id, theme FROM themes');
         $data = $stmt->fetchAll();
         return $data;
     }
@@ -23,13 +23,13 @@ class ModelQuestions
         $selectThemes = $params['selectThemes'];
         $status = 'Ожидает ответа';
         $dateQuestion = date('c');
-        $stmt = $pdo->prepare('INSERT INTO questions (question, theme_id, user, email, date_question, status) VALUES(?, ?, ?, ?, ?, ?)');
-        $stmt->bindParam(1, $question);
-        $stmt->bindParam(2, $selectThemes);
-        $stmt->bindParam(3, $userName);
-        $stmt->bindParam(4, $email);
-        $stmt->bindParam(5, $dateQuestion);
-        $stmt->bindParam(6, $status);
+        $stmt = $pdo->prepare('INSERT INTO questions (question, theme_id, user, email, date_question, status) VALUES(:question, :theme_id, :user, :email, :date_question, :status)');
+        $stmt->bindParam(':question', $question);
+        $stmt->bindParam(':theme_id', $selectThemes);
+        $stmt->bindParam(':user', $userName);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':date_question', $dateQuestion);
+        $stmt->bindParam(':status', $status);
         return $stmt->execute();
     }
 
@@ -37,16 +37,7 @@ class ModelQuestions
     static function questions()
     {
         $pdo = Di::pdo();
-        $stmt = $pdo->query('SELECT * FROM questions ORDER BY date_question');
-        $data = $stmt->fetchAll();
-        return $data;
-    }
-
-// Получим массив с вопросами по темам
-    static function questionTheme()
-    {
-        $pdo = Di::pdo();
-        $stmt = $pdo->query('SELECT * FROM themes LEFT JOIN questions ON themes.id = questions.theme_id');
+        $stmt = $pdo->query('SELECT id, question, theme_id, user, email, date_question, status, answer, admin, date_answer FROM questions ORDER BY date_question');
         $data = $stmt->fetchAll();
         return $data;
     }
@@ -56,8 +47,8 @@ class ModelQuestions
     {
         $pdo = Di::pdo();
         $newTheme = $params['newTheme'];
-        $stmt = $pdo->prepare('INSERT INTO themes (theme) VALUES(?)');
-        $stmt->bindParam(1, $newTheme);
+        $stmt = $pdo->prepare('INSERT INTO themes (theme) VALUES(:theme)');
+        $stmt->bindParam(':theme', $newTheme);
         return $stmt->execute();
     }
 

@@ -1,14 +1,9 @@
 <?php
 require_once '../diplom/core/application.php';
 
-
 // Подключаем Twig
 require_once './vendor/autoload.php';
 Twig_Autoloader::register();
-
-
-
-
 
 Class Twig
 {

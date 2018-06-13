@@ -220,6 +220,7 @@ Class ControllerQuestions
         $data['selectTheme'] = $_POST['selectTheme'];
         $data['selectStatus'] = $_POST['selectStatus'];
         $data['questionID'] = $_POST['questionID'];
+        return $data;
         $result = $edit->edit($data);
         if ($result) {
             header('Location: ../diplom/index.php?menu=themes');

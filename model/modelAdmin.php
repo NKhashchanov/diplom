@@ -10,7 +10,7 @@ class ModelAdmin
         $pdo = Di::pdo();
         $login = $params['login'];
         $password = $params['password'];
-        $stmt = $pdo->prepare('SELECT * FROM admins WHERE login = :login AND password = :password');
+        $stmt = $pdo->prepare('SELECT id, login, password FROM admins WHERE login = :login AND password = :password');
         $stmt->bindParam(':login', $login);
         $stmt->bindParam(':password', $password);
         $stmt->execute();
@@ -48,11 +48,9 @@ class ModelAdmin
         $pdo = Di::pdo();
         $login = $params['login'];
         $password = $params['password'];
-        $id = null;
-        $stmt = $pdo->prepare('INSERT INTO admins (id, login, password) VALUES(?, ?, ?)');
-        $stmt->bindParam(1, $id);
-        $stmt->bindParam(2, $login);
-        $stmt->bindParam(3, $password);
+        $stmt = $pdo->prepare('INSERT INTO admins (login, password) VALUES(:login, :password)');
+        $stmt->bindParam(':login', $login);
+        $stmt->bindParam(':password', $password);
         return $stmt->execute();
     }
 
@@ -60,7 +58,7 @@ class ModelAdmin
     static function admins()
     {
         $pdo = Di::pdo();
-        $stmt = $pdo->query('SELECT * FROM admins');
+        $stmt = $pdo->query('SELECT login, password FROM admins');
         $data = $stmt->fetchAll();
         return $data;
     }
