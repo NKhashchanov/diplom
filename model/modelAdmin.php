@@ -14,10 +14,9 @@ class ModelAdmin
         $stmt->bindParam(':login', $login);
         $stmt->bindParam(':password', $password);
         $stmt->execute();
-        foreach ($stmt->fetchAll() as $data) {
-             $_SESSION['login'] = $data['login'];
-             $_SESSION['id'] = $data['id'];
-        }
+        $data= $stmt->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['login'] = $data['login'];
+        $_SESSION['id'] = $data['id'];
     }
 
 // Изменить пароль администратора
